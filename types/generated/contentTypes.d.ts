@@ -362,43 +362,41 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
+export interface ApiBookBook extends Schema.CollectionType {
+  collectionName: 'books';
   info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'product';
+    singularName: 'book';
+    pluralName: 'books';
+    displayName: 'Book';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    image: Attribute.Media;
-    content: Attribute.Blocks;
-    meta_description: Attribute.Text;
-    meta_title: Attribute.Text;
-    price: Attribute.Decimal;
-    slug: Attribute.UID<'api::product.product', 'name'>;
-    instantDelivery: Attribute.Boolean;
-    whatsIncluded: Attribute.RichText;
-    category: Attribute.Enumeration<['fiction', 'non-fiction']>;
-    files: Attribute.Media;
+    title: Attribute.String;
+    coverImg: Attribute.Media;
+    description: Attribute.RichText;
+    priceInPaisa: Attribute.Integer;
+    slug: Attribute.UID<'api::book.book', 'title'>;
+    category: Attribute.Enumeration<
+      [
+        'fiction',
+        'non-fiction',
+        'sci-fi',
+        'romance',
+        'thriller',
+        'self-help',
+        'technology',
+        'biography'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -839,7 +837,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::product.product': ApiProductProduct;
+      'api::book.book': ApiBookBook;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

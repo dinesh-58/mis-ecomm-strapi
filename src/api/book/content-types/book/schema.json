@@ -16,14 +16,15 @@
       "type": "string"
     },
     "coverImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "description": {
       "type": "richtext"
@@ -39,14 +40,11 @@
       "type": "enumeration",
       "enum": [
         "fiction",
-        "non-fiction",
-        "sci-fi",
-        "romance",
-        "thriller",
-        "self-help",
-        "technology",
-        "biography"
+        "non-fiction"
       ]
+    },
+    "author": {
+      "type": "string"
     }
   }
 }

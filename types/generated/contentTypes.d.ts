@@ -379,18 +379,8 @@ export interface ApiBookBook extends Schema.CollectionType {
     description: Attribute.RichText;
     priceInPaisa: Attribute.Integer;
     slug: Attribute.UID<'api::book.book', 'title'>;
-    category: Attribute.Enumeration<
-      [
-        'fiction',
-        'non-fiction',
-        'sci-fi',
-        'romance',
-        'thriller',
-        'self-help',
-        'technology',
-        'biography'
-      ]
-    >;
+    category: Attribute.Enumeration<['fiction', 'non-fiction']>;
+    author: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
